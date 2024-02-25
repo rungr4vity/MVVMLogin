@@ -7,14 +7,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,34 +30,77 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mvvmlogin.R
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
+import kotlinx.coroutines.launch
 
 @Preview
 @Composable
-fun LoginScreen() {
+fun LoginScreen(viewModel: LoginViewModel) {
     Box(
         Modifier
             .fillMaxSize()
             .padding(16.dp)) {
 
 
-        Login(Modifier.align(Alignment.Center))
+        Login(Modifier.align(Alignment.Center),viewModel)
     }
 
 }
 
 
 @Composable
-fun Login(modifier: Modifier) {
+fun Login(modifier: Modifier, viewModel: LoginViewModel) {
 
-    Column(modifier = modifier) {
-        HeaderImage(modifier.align(Alignment.CenterHorizontally))
-        Spacer(modifier = Modifier.padding(16.dp))
-        EmailField()
-        Spacer(modifier = Modifier.padding(16.dp))
-        PasswordField()
-        Spacer(modifier = Modifier.padding(16.dp))
-        ForgotPasword(Modifier.align(Alignment.End))
-        Spacer(modifier = Modifier.padding(16.dp))
+    val email :String by viewModel.email.observeAsState(initial = "")
+    val password :String by viewModel.password.observeAsState(initial = "")
+    val loginEnabled : Boolean by viewModel.loginEnable.observeAsState(initial = false)
+    val isLoading: Boolean by viewModel.isLoading.observeAsState(initial = false)
+    val coroutineScoope = rememberCoroutineScope()
+
+    if(isLoading){
+        Box(Modifier.fillMaxSize()){
+                CircularProgressIndicator(Modifier.align(Alignment.Center))
+        }
+    } else {
+        Column(modifier = modifier) {
+            HeaderImage(modifier.align(Alignment.CenterHorizontally))
+            Spacer(modifier = Modifier.padding(16.dp))
+            EmailField(email) { viewModel.onLoginChanged(it, password) }
+            Spacer(modifier = Modifier.padding(16.dp))
+            PasswordField(password) { viewModel.onLoginChanged(email, it) }
+            Spacer(modifier = Modifier.padding(16.dp))
+            ForgotPasword(Modifier.align(Alignment.End))
+            Spacer(modifier = Modifier.padding(16.dp))
+            ButtonLogin(loginEnabled) {
+
+                coroutineScoope.launch {
+                    viewModel.onLoginSelected()
+                }
+
+            }
+
+        }
+    }
+} // end
+
+@Composable
+fun ButtonLogin(loginEnabled: Boolean,onLoginSelected:() -> Unit) {
+    Button(onClick = { onLoginSelected() },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
+        colors = ButtonDefaults.buttonColors(
+            disabledContainerColor = Color.Red,
+            disabledContentColor = Color.Green,
+            contentColor = Color.White,
+
+        )
+        , enabled = loginEnabled
+
+
+        ) {
+        Text(text = "Login")
     }
 }
 
@@ -66,8 +114,11 @@ fun ForgotPasword(modifier: Modifier) {
 }
 
 @Composable
-fun PasswordField() {
-    TextField(value = "", onValueChange = {}, modifier = Modifier.fillMaxWidth(),
+fun PasswordField(password:String,onTextFieldChanged:(String)-> Unit) {
+    TextField(
+        value = password,
+        onValueChange = {onTextFieldChanged(it)},
+        modifier = Modifier.fillMaxWidth(),
 
         placeholder = { Text(text = "Password")},
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -88,8 +139,18 @@ fun PasswordField() {
         )
 }
 @Composable
-fun EmailField() {
-    TextField(value = "", onValueChange = {}, modifier = Modifier.fillMaxWidth(),
+fun EmailField(email:String,onTextFieldChanged:(String)-> Unit) {
+
+//    var email by remember {
+//        mutableStateOf("")
+//    }
+
+
+    TextField(
+        value = email,
+        onValueChange = { onTextFieldChanged(it)  },
+
+        modifier = Modifier.fillMaxWidth(),
         placeholder = { Text(text = "Email")},
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         singleLine = true,
