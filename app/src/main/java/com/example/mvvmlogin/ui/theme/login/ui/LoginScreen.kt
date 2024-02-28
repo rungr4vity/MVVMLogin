@@ -3,12 +3,12 @@ package com.example.mvvmlogin.ui.theme.login.ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -63,22 +63,28 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel) {
                 CircularProgressIndicator(Modifier.align(Alignment.Center))
         }
     } else {
-        Column(modifier = modifier) {
-            HeaderImage(modifier.align(Alignment.CenterHorizontally))
-            Spacer(modifier = Modifier.padding(16.dp))
-            EmailField(email) { viewModel.onLoginChanged(it, password) }
-            Spacer(modifier = Modifier.padding(16.dp))
-            PasswordField(password) { viewModel.onLoginChanged(email, it) }
-            Spacer(modifier = Modifier.padding(16.dp))
-            ForgotPasword(Modifier.align(Alignment.End))
-            Spacer(modifier = Modifier.padding(16.dp))
-            ButtonLogin(loginEnabled) {
+        LazyColumn(modifier = modifier) {
 
-                coroutineScoope.launch {
-                    viewModel.onLoginSelected()
+            item{
+
+                HeaderImage(modifier)
+                Spacer(modifier = Modifier.padding(16.dp))
+                EmailField(email) { viewModel.onLoginChanged(it, password) }
+                Spacer(modifier = Modifier.padding(16.dp))
+                PasswordField(password) { viewModel.onLoginChanged(email, it) }
+                Spacer(modifier = Modifier.padding(16.dp))
+                ForgotPasword(modifier)
+                Spacer(modifier = Modifier.padding(16.dp))
+                ButtonLogin(loginEnabled) {
+
+                    coroutineScoope.launch {
+                        viewModel.onLoginSelected()
+                    }
+
                 }
+            } // end item
 
-            }
+
 
         }
     }
@@ -175,5 +181,6 @@ fun EmailField(email:String,onTextFieldChanged:(String)-> Unit) {
 }
 @Composable
 fun HeaderImage(modifier: Modifier) {
-    Image(painter = painterResource(id = R.drawable.ilpacolo), contentDescription = "header",modifier = modifier )
+    Image(painter = painterResource(id = R.drawable.ilpacolo), contentDescription = "header",modifier = modifier
+        .fillMaxWidth())
 }
