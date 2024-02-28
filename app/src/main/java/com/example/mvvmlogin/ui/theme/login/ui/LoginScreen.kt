@@ -34,7 +34,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import kotlinx.coroutines.launch
 
-@Preview
+
 @Composable
 fun LoginScreen(viewModel: LoginViewModel) {
     Box(
