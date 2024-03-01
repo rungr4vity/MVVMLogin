@@ -54,6 +54,9 @@ dependencies {
 
     // room databse
     val room_version = "2.6.1"
+    val nav_version = "2.7.7"
+
+
     implementation("androidx.room:room-runtime:$room_version")
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
@@ -69,6 +72,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.2")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 
 
 

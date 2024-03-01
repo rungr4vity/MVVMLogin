@@ -32,25 +32,25 @@ import androidx.compose.ui.unit.sp
 import com.example.mvvmlogin.R
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel) {
+fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
     Box(
         Modifier
             .fillMaxSize()
             .padding(16.dp)) {
 
 
-        Login(Modifier.align(Alignment.Center),viewModel)
+        Login(Modifier.align(Alignment.Center),viewModel,navController)
     }
 
 }
 
-
 @Composable
-fun Login(modifier: Modifier, viewModel: LoginViewModel) {
+fun Login(modifier: Modifier, viewModel: LoginViewModel,navController:NavController) {
 
     val email :String by viewModel.email.observeAsState(initial = "")
     val password :String by viewModel.password.observeAsState(initial = "")
@@ -78,7 +78,7 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel) {
                 ButtonLogin(loginEnabled) {
 
                     coroutineScoope.launch {
-                        viewModel.onLoginSelected()
+                        viewModel.onLoginSelected(navController)
                     }
 
                 }

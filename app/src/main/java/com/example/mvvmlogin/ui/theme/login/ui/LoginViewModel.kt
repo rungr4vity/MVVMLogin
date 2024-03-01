@@ -4,6 +4,8 @@ import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
+import com.example.mvvmlogin.ui.navigation.AppScreens
 import kotlinx.coroutines.delay
 
 class LoginViewModel: ViewModel() {
@@ -29,10 +31,14 @@ class LoginViewModel: ViewModel() {
     }
 
     private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    suspend fun onLoginSelected() {
+    suspend fun onLoginSelected(navController: NavController) {
         _isLoading.value = true
             delay(4000)
         _isLoading.value = false
+
+        navController.navigate(AppScreens.HomeScreen.name)
+
+
     }
 
 }

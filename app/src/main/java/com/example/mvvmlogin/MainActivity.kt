@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.mvvmlogin.ui.navigation.AppNavigation
 import com.example.mvvmlogin.ui.theme.MVVMLoginTheme
 import com.example.mvvmlogin.ui.theme.login.ui.LoginScreen
 import com.example.mvvmlogin.ui.theme.login.ui.LoginViewModel
@@ -24,9 +25,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //Greeting("Android")
-                    //use dagger Hilt for dependecy injection
-                    LoginScreen(LoginViewModel())
+
+                    ////use dagger Hilt for dependecy injection
+                    //LoginScreen(LoginViewModel())
+                    AppNavigation()
                 }
             }
         }
