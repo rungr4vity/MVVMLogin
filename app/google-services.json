@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "561359536389",
+    "project_id": "zeroapp-e63f6",
+    "storage_bucket": "zeroapp-e63f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561359536389:android:24f498fe37a2b47903f76c",
+        "android_client_info": {
+          "package_name": "com.example.mvvmlogin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgVr3MMeAxgRpPU8FJILlGSX58u2ryiwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

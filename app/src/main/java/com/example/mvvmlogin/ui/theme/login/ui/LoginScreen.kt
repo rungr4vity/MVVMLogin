@@ -42,8 +42,6 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
         Modifier
             .fillMaxSize()
             .padding(16.dp)) {
-
-
         Login(Modifier.align(Alignment.Center),viewModel,navController)
     }
 
@@ -82,6 +80,8 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel,navController:NavControl
                     }
 
                 }
+
+                ButtonCreate()
             } // end item
 
 
@@ -103,12 +103,28 @@ fun ButtonLogin(loginEnabled: Boolean,onLoginSelected:() -> Unit) {
 
         )
         , enabled = loginEnabled
-
-
         ) {
         Text(text = "Login")
     }
 }
+@Composable
+fun ButtonCreate() {
+    Button(onClick = {  },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
+        colors = ButtonDefaults.buttonColors(
+            disabledContainerColor = Color.White,
+            disabledContentColor = Color.White,
+            contentColor = Color.White,
+
+            )
+        , enabled = true
+    ) {
+        Text(text = "Create")
+    }
+}
+
 
 @Composable
 fun ForgotPasword(modifier: Modifier) {
