@@ -1,8 +1,14 @@
 package com.example.mvvmlogin
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.provider.Settings.Global.getString
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
+
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -14,8 +20,11 @@ import com.example.mvvmlogin.ui.navigation.AppNavigation
 import com.example.mvvmlogin.ui.theme.MVVMLoginTheme
 import com.example.mvvmlogin.ui.theme.login.ui.LoginScreen
 import com.example.mvvmlogin.ui.theme.login.ui.LoginViewModel
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
-class MainActivity : ComponentActivity() {
+// ComponentActivity
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -35,6 +44,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+fun getInfo() {
+}
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(

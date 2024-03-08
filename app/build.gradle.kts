@@ -54,6 +54,8 @@ android {
 
 dependencies {
 
+    implementation("com.google.firebase:firebase-messaging-ktx:23.4.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
     // room databse
     val room_version = "2.6.1"
     val nav_version = "2.7.7"
@@ -77,6 +79,11 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // biometric
+    implementation("androidx.biometric:biometric:1.1.0")
+    implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
+    
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
     implementation("com.google.firebase:firebase-analytics")
