@@ -82,8 +82,7 @@ dependencies {
 
     // biometric
     implementation("androidx.biometric:biometric:1.1.0")
-    implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
-    
+
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
     implementation("com.google.firebase:firebase-analytics")
