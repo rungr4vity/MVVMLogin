@@ -55,13 +55,13 @@ android {
 dependencies {
 
     // room databse
-    val room_version = "2.6.1"
-    val nav_version = "2.7.7"
+    val roomVersion = "2.6.1"
+    val navVersion = "2.7.7"
 
 
-    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-runtime:$roomVersion")
     // To use Kotlin annotation processing tool (kapt)
-    kapt("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$roomVersion")
 
 
 
@@ -76,7 +76,7 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.6.2")
 
     // Jetpack Compose Integration
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("androidx.navigation:navigation-compose:$navVersion")
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
     implementation("com.google.firebase:firebase-analytics")
