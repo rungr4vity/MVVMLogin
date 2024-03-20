@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -23,7 +22,6 @@ import com.example.mvvmlogin.ui.theme.MVVMLoginTheme
 import com.example.mvvmlogin.ui.theme.login.ui.LoginScreen
 import com.example.mvvmlogin.ui.theme.login.ui.LoginViewModel
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 
 //ComponentActivity
 //AppCompatActivity
