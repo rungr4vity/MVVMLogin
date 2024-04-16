@@ -26,8 +26,7 @@ fun AppNavigation() {
         }
 
         composable(AppScreens.HomeScreen.name) {
-            HomeScreen(navController)
-
+            HomeScreen()
         }
     }
 }

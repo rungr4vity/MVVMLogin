@@ -77,6 +77,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.2")
 
+    implementation ("androidx.compose.material:material-icons-extended:1.3.1")
+
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$navVersion")
 

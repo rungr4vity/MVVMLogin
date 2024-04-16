@@ -11,9 +11,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -32,8 +37,11 @@ import androidx.compose.ui.unit.sp
 import com.example.mvvmlogin.R
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
+
 
 
 @Composable
@@ -81,7 +89,7 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel,navController:NavControl
 
                 }
 
-                ButtonCreate()
+                //ButtonCreate()
             } // end item
 
 
@@ -137,6 +145,8 @@ fun ForgotPasword(modifier: Modifier) {
 
 @Composable
 fun PasswordField(password:String,onTextFieldChanged:(String)-> Unit) {
+    var showPassword by remember { mutableStateOf(value = false) }
+
     TextField(
         value = password,
         onValueChange = {onTextFieldChanged(it)},
@@ -147,6 +157,29 @@ fun PasswordField(password:String,onTextFieldChanged:(String)-> Unit) {
         singleLine = true,
         maxLines = 1,
         shape = RoundedCornerShape(8.dp),
+        visualTransformation = if (showPassword) {
+            VisualTransformation.None
+        } else {
+            PasswordVisualTransformation()
+        },
+        trailingIcon = {
+            if (showPassword) {
+                IconButton(onClick = { showPassword = false }) {
+                    Icon(
+                        imageVector = Icons.Filled.Visibility,
+                        contentDescription = "hide_password"
+                    )
+                }
+            } else {
+                IconButton(
+                    onClick = { showPassword = true }) {
+                    Icon(
+                        imageVector = Icons.Filled.VisibilityOff,
+                        contentDescription = "hide_password"
+                    )
+                }
+            }
+        },
 
         colors = TextFieldDefaults.colors(
             //setting the text field background when it is focused
