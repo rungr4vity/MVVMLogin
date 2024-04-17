@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMLogin"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAjz5NvkfPlM1hxEHDokIxvYRu0zMo2DQM"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true"

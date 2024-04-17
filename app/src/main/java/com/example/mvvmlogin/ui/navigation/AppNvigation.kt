@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mvvmlogin.ui.theme.login.ui.HomeScreen
 import com.example.mvvmlogin.ui.theme.login.ui.LoginScreen
 import com.example.mvvmlogin.ui.theme.login.ui.LoginViewModel
+import com.example.mvvmlogin.ui.theme.mapas.ui.MapView
 
 @Composable
 fun AppNavigation() {
@@ -27,6 +28,10 @@ fun AppNavigation() {
 
         composable(AppScreens.HomeScreen.name) {
             HomeScreen()
+        }
+
+        composable(AppScreens.MapView.name) {
+            MapView()
         }
     }
 }
