@@ -4,6 +4,8 @@ plugins {
     id("kotlin-kapt")
 
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+
 }
 
 android {
@@ -23,6 +25,8 @@ android {
         }
     }
 
+
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -32,6 +36,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -76,15 +81,11 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.2")
-
     implementation ("androidx.compose.material:material-icons-extended:1.3.1")
-
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$navVersion")
-
     // biometric
     implementation("androidx.biometric:biometric:1.1.0")
-
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
     implementation("com.google.firebase:firebase-analytics")
@@ -97,6 +98,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    implementation("com.google.maps.android:maps-compose:1.0.0")
     implementation ("com.google.android.gms:play-services-maps:18.0.0")
+
+
 
 }
