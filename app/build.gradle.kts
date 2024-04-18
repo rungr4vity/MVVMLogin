@@ -61,6 +61,7 @@ dependencies {
 
     implementation("com.google.firebase:firebase-messaging-ktx:23.4.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.firebase:firebase-database:20.3.1")
     // room databse
     val roomVersion = "2.6.1"
     val navVersion = "2.7.7"

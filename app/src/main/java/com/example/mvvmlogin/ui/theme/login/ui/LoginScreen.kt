@@ -1,5 +1,6 @@
 package com.example.mvvmlogin.ui.theme.login.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -37,9 +38,13 @@ import androidx.compose.ui.unit.sp
 import com.example.mvvmlogin.R
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.navigation.NavController
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
+
 import kotlinx.coroutines.launch
 
 
@@ -51,8 +56,30 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
             .fillMaxSize()
             .padding(16.dp)) {
         Login(Modifier.align(Alignment.Center),viewModel,navController)
+
+        insertInfo()
     }
 
+}
+
+
+data class Contact(val email: String,val lot: Int)
+
+@Composable
+fun insertInfo() {
+    val context = LocalContext.current
+    val database = Firebase.database
+//    val myRef = database.getReference("message")
+//
+//    myRef.setValue("Hello, updated")
+
+    val parkingsRef = database.reference.child("Contacs")
+    val parkingRef = parkingsRef.child("Martin")
+    val contact = Contact("martin@op.com",410)
+
+    parkingRef.setValue(contact)
+
+    Toast.makeText(context,"Saved",Toast.LENGTH_LONG).show()
 }
 
 @Composable
