@@ -60,9 +60,9 @@ class LoginViewModel: ViewModel() {
             delay(4000)
         _isLoading.value = false
 
-        //navController.navigate(AppScreens.HomeScreen.name)
+        navController.navigate(AppScreens.HomeScreen.name)
 
-        navController.navigate(AppScreens.MapView.name)
+        //navController.navigate(AppScreens.MapView.name)
 
     }
 

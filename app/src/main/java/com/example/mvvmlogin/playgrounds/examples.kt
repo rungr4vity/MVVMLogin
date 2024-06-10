@@ -1,22 +1,65 @@
+
 fun main() {
 
 
+    //val myInput = listOf<Int>(1,4,4,5,6,88,88,90)
+    //print(myInput.zipWithNext())
 
-    var list1 = listOf<Int>(1,34,55,67,8)
-    var list2 = listOf<Int>(1,45,67,90)
+    //print(duplicates(myInput).toString())
 
-    var mergedlist:List<Int> = eliminateDuplicates(list1,list2)
+    //val myList = listOf<String>("Paco")
 
-    mergedlist.forEach {
-        print(",$it")
+
+
+
+    //val myList = "Paco"
+    //goreverse(myList)
+
+
+    val mynumber = 19087
+    //reverseNumber(mynumber.toString())
+
+    reverseInt(mynumber)
+}
+
+
+fun reverseInt(input: Int) {
+
+    var n = input
+    var result = 0
+
+    while(n>0){
+
+        result = result * 10 + n % 10
+        n /= 10
     }
+
+    print(result)
+
 }
 
-fun <T> eliminateDuplicates(lista1:List<T>,lista2:List<T>): List<T> {
+fun reverseNumber(input: String) {
 
-    var mergedlist = mutableSetOf<T>()
-    mergedlist.addAll(lista1 + lista2)
+    var result = ""
+    input.forEach {
+
+        result = it + result
+
+        println(result)
+    }
 
 
-    return mergedlist.toList()
 }
+
+fun goreverse(input: String) {
+    var result = ""
+    input.forEach {
+
+        result = it.toString() + result
+    }
+    println(result)
+}
+
+
+
+//fun duplicates(input:List<Int>) = input.toSet()
