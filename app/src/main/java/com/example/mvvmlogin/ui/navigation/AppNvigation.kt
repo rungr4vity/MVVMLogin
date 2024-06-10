@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mvvmlogin.ui.presentation.agenda.CalendarForm
+import com.example.mvvmlogin.ui.presentation.agenda.TimePickerForm
 import com.example.mvvmlogin.ui.theme.login.ui.HomeScreen
 import com.example.mvvmlogin.ui.theme.login.ui.LoginScreen
 import com.example.mvvmlogin.ui.theme.login.ui.LoginViewModel
@@ -29,7 +30,8 @@ fun AppNavigation() {
             ////use dagger Hilt for dependecy injection
             //LoginScreen(LoginViewModel(),navController)
 
-            CalendarForm()
+            //CalendarForm()
+            TimePickerForm()
         }
 
         composable(AppScreens.HomeScreen.name) {
