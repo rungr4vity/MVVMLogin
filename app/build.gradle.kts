@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 
+    id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 
@@ -54,7 +55,9 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
+
+
+
 }
 
 dependencies {
@@ -67,12 +70,15 @@ dependencies {
     // room databse
     val roomVersion = "2.6.1"
     val navVersion = "2.7.7"
+    val hilt_version = "2.48"
 
 
     implementation("androidx.room:room-runtime:$roomVersion")
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$roomVersion")
 
+    implementation ("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-compiler:$hilt_version")
 
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -100,16 +106,12 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
     implementation("com.google.maps.android:maps-compose:1.0.0")
     implementation ("com.google.android.gms:play-services-maps:18.0.0")
-
     implementation ("com.facebook.android:facebook-android-sdk:14.1.0")
-
-
-
     implementation ("androidx.compose.material:material:1.4.0")
 
 
 
+}
 }

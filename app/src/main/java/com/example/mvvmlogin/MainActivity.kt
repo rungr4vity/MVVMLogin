@@ -33,13 +33,13 @@ import androidx.compose.ui.tooling.preview.Preview
 
 import com.example.mvvmlogin.ui.navigation.AppNavigation
 import com.example.mvvmlogin.ui.theme.MVVMLoginTheme
-
-
+import dagger.hilt.android.AndroidEntryPoint
 
 
 //ComponentActivity
 //AppCompatActivity
 @OptIn(ExperimentalMaterial3Api::class)
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     var TAG = "myCode:"
