@@ -1,6 +1,8 @@
 package com.example.mvvmlogin
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 
@@ -47,8 +49,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.d(TAG,"onCreate")
+        Intent(this, HomeActivity::class.java).also {
+            startActivity(it)
+        }
 
+
+        Log.d(TAG,"onCreate")
         setContent {
             MVVMLoginTheme {
 
@@ -73,6 +79,11 @@ class MainActivity : ComponentActivity() {
         //setupAuth()
     }
 
+
+    //memory leak
+//    companion object {
+//        lateinit var context: Context
+//    }
 
     override fun onStart() {
         super.onStart()
